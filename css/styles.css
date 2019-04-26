@@ -1,86 +1,166 @@
-*{
-  font-family:'Roboto', sans-serif;
-  box-sizing: border-box;
-  margin: 0;
+header{
+  background-color: #2D4F6B;
+  padding-top: 20px;
+
 }
-li{
+  ul.header {
+  padding: 0;
   list-style: none;
+  background-color: #2D4F6B;
 }
-main{
-max-width: 1400px;
-margin: 0 auto;
+li.header {
+  color: white;
 }
-img.cabeza{
-  width: 100%;
-}
-section.productos{
-  padding:5%;
-  position: relative;
-}
-div.categorias{
-  position: absolute;
-  top:23% ;
-  left: 10%;
+.bookish {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  padding-left: 30px;
+}
+.menulargo {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+}
+.bookish {
+  height: 46px;
   align-items: center;
-  width: 80%;
+  padding: 0 10px;
+  color: rgb(44,77,10);
+  justify-content: flex-start;
+  justify-content: center;
 }
-div.img{
-  width: 40%;
+.bookish li {
+  cursor: pointer;
 }
-img.articulo{
-  width: 100%;
+.bookish li:hover{
+  color: rgba(85,172,238 ,1);
 }
-div.fondo-azul{
-  background-color: rgb(157, 173, 186);
-  position: relative;
-  width: 60%;
-  margin: 0 auto;
-  height: 73vh;
-}
-section.interes{
-  background-color: rgb(157, 173, 186);
+.listagrande {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 2.5%
+  height: 46px;
+  align-items: center;
+  padding: 0 10px;
+  color: rgb(44,77,10);
+  justify-content: flex-start;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
 }
-h3.titulo{ color: #FFF;
-  width: 100%;
-  margin-bottom: 2%;
+.listagrande li {
+  cursor: pointer;
 }
-article.articulos{
-width: 30%;
+.listagrande li:hover{
+  color: rgba(85,172,238 ,1);
 }
-button.boton{
-background-color: rgb(157, 173, 186);
+.menucorto {
+  margin-left: auto;
+  margin-right: auto;
+  color: rgb(157, 173, 186);
 }
-@media (max-width : 1200px){
-section.productos{
-  padding-top: 0%;
-  padding-bottom: 0%;
+.logo {
+  width: 100px;
 }
-div.fondo-azul{
+li.header {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12pt;
+}
+button.dropbtn{
+  background-color: black;
+}
+@media (min-width:768px){
+  .navbar{
+    display: none;
+  }
+}
+@media (max-width:768px) {
+.bookish{
   display: none;
 }
-div.categorias{
-  position: relative;
+header{
+  padding-top: 50px;
 }
-div.img{
-width: 70%;
+.logo{
+  padding-bottom: 50%;
+  width: 120px;
 }
-div.primera{
-  margin: 10% 0;
+#chau{
+  display: none;
 }
-div.segunda{
-  margin-bottom: 10%;
-}
-h3{
+
+.dentrodemenu{
+  display: block;
   text-align: center;
 }
-article.articulos{
-  width: 80%;
 }
+///////////Botondemenu/////////////
+
+/* Navbar container */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 30px;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: inherit;
+  font-family: 'Montserrat', sans-serif; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: grey;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  margin-top: 23px;
+  position: absolute;
+  background-color: #2D4F6B;
+  min-width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(157, 173, 186, 1);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  text-align: center;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
 }
