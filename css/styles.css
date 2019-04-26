@@ -1,0 +1,86 @@
+*{
+  font-family:'Roboto', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+}
+li{
+  list-style: none;
+}
+main{
+max-width: 1400px;
+margin: 0 auto;
+}
+img.cabeza{
+  width: 100%;
+}
+section.productos{
+  padding:5%;
+  position: relative;
+}
+div.categorias{
+  position: absolute;
+  top:23% ;
+  left: 10%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 80%;
+}
+div.img{
+  width: 40%;
+}
+img.articulo{
+  width: 100%;
+}
+div.fondo-azul{
+  background-color: rgb(157, 173, 186);
+  position: relative;
+  width: 60%;
+  margin: 0 auto;
+  height: 73vh;
+}
+section.interes{
+  background-color: rgb(157, 173, 186);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 2.5%
+}
+h3.titulo{ color: #FFF;
+  width: 100%;
+  margin-bottom: 2%;
+}
+article.articulos{
+width: 30%;
+}
+button.boton{
+background-color: rgb(157, 173, 186);
+}
+@media (max-width : 1200px){
+section.productos{
+  padding-top: 0%;
+  padding-bottom: 0%;
+}
+div.fondo-azul{
+  display: none;
+}
+div.categorias{
+  position: relative;
+}
+div.img{
+width: 70%;
+}
+div.primera{
+  margin: 10% 0;
+}
+div.segunda{
+  margin-bottom: 10%;
+}
+h3{
+  text-align: center;
+}
+article.articulos{
+  width: 80%;
+}
+}

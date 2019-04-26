@@ -1,0 +1,53 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+li{
+  list-style: none;
+}
+main{
+width: 1000px;
+margin: 0 auto;
+}
+img.cabeza{
+  width: 100%;
+}
+section.productos{
+  padding:5%;
+  position: relative;
+}
+div.categorias{
+  position: absolute;
+  top:23% ;
+  left: 10%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 80%;
+}
+img.articulo{
+  width: 40%;
+}
+div.fondo-azul{
+  background-color: rgb(157, 173, 186);
+  position: relative;
+  width: 60%;
+  margin: 0 auto;
+  height: 350px;
+
+}
+section.interes{
+  background-color: rgb(157, 173, 186);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 2.5%
+}
+h3.titulo{
+  width: 100%;
+  margin-bottom: 2%;
+}
+article.articulos{
+width: 30%;
+}
