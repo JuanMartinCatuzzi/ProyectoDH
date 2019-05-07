@@ -1,5 +1,8 @@
 <?PHP
 $ocupaciones=["Estudiante", "Empleada/o", "Desempleada/o", "Autónomo", "Jubilada/o"];
+if ($_POST){
+
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,7 +38,7 @@ $ocupaciones=["Estudiante", "Empleada/o", "Desempleada/o", "Autónomo", "Jubilad
   <ul class="listagrande-header">
     <li class="menucorto header" id="chau">PREGUNTAS FRECUENTES</li>
     <li class="menucorto dentrodemenu"><img class="logo" src="img/Bookish.png" alt=""></li>
-    <li class="menucorto header" id="chau"><a class="menucorto" href="login.php">LOG IN </a> / <a class="menucorto" href="php/home.php">HOME</a></li>
+    <li class="menucorto header" id="chau"><a class="menucorto" href="login.php">LOG IN </a> / <a class="menucorto" href="home.php">HOME</a></li>
   </ul>
 
   <!--SEGUNDA FILA INFLUYE MAS OPCIONES -->
@@ -56,7 +59,7 @@ $ocupaciones=["Estudiante", "Empleada/o", "Desempleada/o", "Autónomo", "Jubilad
   <main>
     <section>
       <div class='formulario'>
-          <form class='registro' action='home.php' method='post'>
+          <form class='registro' action='register.php' method='post'>
             <div class='container'>
                 <label for='name' >Nombre: </label>
                 <input type='text' name='name' id='name' value=''/>
@@ -78,8 +81,8 @@ $ocupaciones=["Estudiante", "Empleada/o", "Desempleada/o", "Autónomo", "Jubilad
                 <input type='password' name='password' id='password' value=''/>
             </div>
             <div class='container'>
-                <label for='password' >Repetir contraseña: </label>
-                <input type='password' name='password' id='password'/>
+                <label for='password-repeat' >Repetir contraseña: </label>
+                <input type='password' name='password-repeat' id='password'/>
             </div>
             <div class='container'>
                 <label for='age' >Edad: </label>
@@ -88,6 +91,7 @@ $ocupaciones=["Estudiante", "Empleada/o", "Desempleada/o", "Autónomo", "Jubilad
             <div class='container'>
                 <label for='ocupacion' >Ocupación: </label>
                 <select class="" name="ocupacion" id="ocupacion" >
+                  <option value="" selected>Seleccionar</option>
                   <?php foreach ($ocupaciones as $key):?>
                     <option value="<?=$key ?>"><?=$key ?></option>
                   <?php endforeach; ?>
@@ -96,6 +100,7 @@ $ocupaciones=["Estudiante", "Empleada/o", "Desempleada/o", "Autónomo", "Jubilad
             <input type='submit' name='Submit' value='Enviar' />
             </div>
           </form>
+        <?php  var_dump($_POST) ?>
       </div>
     </section>
   </main>

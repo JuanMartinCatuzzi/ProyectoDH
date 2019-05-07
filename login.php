@@ -35,7 +35,7 @@
   <ul class="listagrande-header">
     <li class="menucorto header" id="chau">PREGUNTAS FRECUENTES</li>
     <li class="menucorto dentrodemenu"><img class="logo" src="img/Bookish.png" alt=""></li>
-    <li class="menucorto header" id="chau"><a class="menucorto" href="register.php">REGISTRARSE </a>/<a class="menucorto" href="php/home.php">HOME</a></li>
+    <li class="menucorto header" id="chau"><a class="menucorto" href="register.php">REGISTRARSE </a>/<a class="menucorto" href="home.php">HOME</a></li>
   </ul>
 
   <!--SEGUNDA FILA INFLUYE MAS OPCIONES -->
