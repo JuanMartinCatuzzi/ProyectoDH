@@ -75,4 +75,17 @@ $array["usuarios"][]=$usuario;
 $array=json_encode($array, JSON_PRETTY_PRINT);
 file_put_contents("db.json", $array);
 }
+//LOGIN
+function BuscarUsuario($email){
+  $json=file_get_contents("db.json");
+  $array=json_decode($json, true);
+  //Buscar en la tabla
+  foreach ($array["usuarios"] as $usuario) {
+    if($usuario["email"]==$email){
+      return $usuario;
+    }
+  }
+}
+
+
 ?>
