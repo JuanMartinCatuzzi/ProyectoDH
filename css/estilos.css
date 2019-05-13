@@ -247,6 +247,10 @@ ul.ingrese{
 i.social{
   font-size: 35pt;
 }
+label.error{
+  color: rgb(255, 0, 0);
+  font-size: 15pt;
+}
 @media (max-width : 1200px){
   /*HEADER*/
   .bookish{

@@ -1,7 +1,21 @@
 <?PHP
+include_once "functions.php";
 $ocupaciones=["Estudiante", "Empleada/o", "Desempleada/o", "Autónomo", "Jubilada/o"];
+$errores=[];
+$nameOK="";
+$surnameOK="";
+$emailOK="";
+$ageOK="";
 if ($_POST){
-
+  $errores=ValidarDatos($_POST);
+  $nameOK=trim($_POST["name"]);
+  $surnameOK=trim($_POST["surname"]);
+  $emailOK=trim($_POST["email"]);
+  $ageOK=trim($_POST["age"]);
+  if(empty($errores)){
+    $usuario=ArmarUsuario();
+    GuardarUsuario($usuario);
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -62,31 +76,61 @@ if ($_POST){
           <form class='registro' action='register.php' method='post'>
             <div class='container'>
                 <label for='name' >Nombre: </label>
-                <input type='text' name='name' id='name' value=''/>
+                <?php if (isset($errores["name"])): ?>
+                <input type="text" id="name" name="name" value="">
+              <?php else : ?>
+                <input type="text" name="name" id="name" value="<?= $nameOK?>">
+              <?php endif; ?>
+                <?php if (isset($errores["name"])):?>
+                  <label class="error" for="name"><?=$errores["name"]?></label>
+                <?php endif; ?>
             </div>
             <div class='container'>
-                <label for='name' >Apellido: </label>
-                <input type='text' name='surname' id='surname' value=''/>
-            </div>
-            <div class='container'>
-                <label for='username' >Nombre de usuario: </label>
-                <input type='text' name='username' id='username' value=''/>
+                <label for='surname' >Apellido: </label>
+                <?php if (isset($errores["surname"])): ?>
+                <input type="text" id="surname" name="surname" value="">
+              <?php else : ?>
+                <input type="text" name="surname" id="surname" value="<?= $surnameOK?>">
+              <?php endif; ?>
+                <?php if (isset($errores["surname"])):?>
+                  <label class="error" for="surname"><?=$errores["surname"]?></label>
+                <?php endif; ?>
             </div>
             <div class='container'>
                 <label for='email' >E-mail: </label>
-                <input type='text' name='email' id='email' value=''/>
+                <?php if (isset($errores["email"])): ?>
+                <input type="email" id="email" name="email" value="">
+              <?php else : ?>
+                <input type="email" name="email" id="email" value="<?= $emailOK?>">
+              <?php endif; ?>
+                <?php if (isset($errores["email"])):?>
+                  <label class="error" for="email"><?=$errores["email"]?></label>
+                <?php endif; ?>
             </div>
             <div class='container'>
                 <label for='password' >Contraseña: </label>
                 <input type='password' name='password' id='password' value=''/>
+                <?php if (isset($errores["password"])):?>
+                  <label class="error" for="password"><?=$errores["password"]?></label>
+                <?php endif; ?>
             </div>
             <div class='container'>
                 <label for='password-repeat' >Repetir contraseña: </label>
                 <input type='password' name='password-repeat' id='password'/>
+                <?php if (isset($errores["password-repeat"])):?>
+                  <label class="error" for="password-repeat"><?=$errores["password-repeat"]?></label>
+                <?php endif; ?>
             </div>
             <div class='container'>
                 <label for='age' >Edad: </label>
-                <input type='text' name='age' id='age'/>
+                <?php if (isset($errores["age"])): ?>
+                <input type="number" id="age" name="age" value="">
+              <?php else : ?>
+                <input type="number" name="age" id="age" value="<?= $ageOK?>">
+              <?php endif; ?>
+                <?php if (isset($errores["age"])):?>
+                  <label class="error" for="age"><?=$errores["age"]?></label>
+                <?php endif; ?>
             </div>
             <div class='container'>
                 <label for='ocupacion' >Ocupación: </label>
@@ -96,12 +140,12 @@ if ($_POST){
                     <option value="<?=$key ?>"><?=$key ?></option>
                   <?php endforeach; ?>
                 </select>
+                <?php if (isset($errores["ocupacion"])):?>
+                  <label class="error" for="ocupacion"><?=$errores["ocupacion"]?></label>
+                <?php endif; ?>
             </div>
             <input type='submit' name='Submit' value='Enviar' />
-            </div>
           </form>
-        <?php  var_dump($_POST) ?>
-      </div>
     </section>
   </main>
   <footer>
