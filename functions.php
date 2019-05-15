@@ -84,8 +84,36 @@ function BuscarUsuario($email){
     if($usuario["email"]==$email){
       return $usuario;
     }
+    else {
+      return null;
+    }
   }
 }
 
+function ExisteUsuario($email){
+  $usuario= BuscarUsuario($email);
+  return is_array($usuario);
+}
 
+function ValidarLogin($datos){
+  $errores=[];
+if (strlen($datos["email"])==0) {
+  $errores["email"]="El campo no debe estar vacío";
+}
+elseif (!filter_var($datos["email"], FILTER_VALIDATE_EMAIL)) {
+  $errores["email"]="Completar el campo con formato email";
+}
+elseif (!ExisteUsuario($datos["email"])){
+  $errores["email"]="El usuario no existe";
+}
+if (strlen($datos["password"])==0) {
+  $errores["password"]="El campo no debe estar vacío";
+}
+else {
+  $usuario=BuscarUsuario($datos["email"]);
+  if (!password_verify($datos["password"], $usuario["email"])){
+    $errores["password"]="La contraseña es incorrecta";
+  }
+  return $errores;
+}
 ?>

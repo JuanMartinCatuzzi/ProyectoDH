@@ -1,5 +1,5 @@
 <?PHP
-
+require_once "functions.php";
 ?>
 <!DOCTYPE html>
 <html>
