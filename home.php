@@ -14,6 +14,7 @@ include_once "functions.php";
   </head>
   <body>
     <header>
+      <div class="header-entero">
       <!--Menu con icono -->
       <div class="header-container">
     <div class="navbar">
@@ -50,12 +51,17 @@ include_once "functions.php";
         <li class="header"><i class="menulargo"></i>|</li>
         <li class="header"><i class="menulargo"></i>QUIENES SOMOS</li>
     </ul>
+    </div>
     </header>
+    <!-- MAIN -->
     <main>
       <div class="imagen">
-        <img src="img/bookish-02.jpg" alt="" class="cabeza">
+        <?php if(UsuarioLogeado()):?>
+          <?php $usuario=BuscarUsuario($_SESSION["email"]);  ?>
+          <h2 class="bienvenido">¡Bienvenido, <?= $usuario["nombre"] ?>!</h2>
+        <?php endif; ?>
       </div>
-      <section class="productos">
+    <section class="productos">
         <div class="fondo-azul">
 
         </div>
