@@ -1,5 +1,21 @@
 <?PHP
 require_once "functions.php";
+$errores=[];
+
+if (UsuarioLogeado()) {
+  header("Location:home.php");
+  exit;
+}
+
+if ($_POST){
+  $errores=ValidarLogin($_POST);
+  if (empty($errores)){
+    LogearUsuario($_POST["email"]);
+    var_dump($_SESSION);
+    header("Location:home.php");
+    exit;
+  }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,15 +66,21 @@ require_once "functions.php";
   <main>
     <section>
     <div class='formulario'>
-        <form class='login' action='php/home.php' method='post'>
+        <form class='login' action='login.php' method='post'>
           <h3>Ingrese Usuario y Contraseña para continuar:</h3>
           <div class='container'>
               <label for='email' >E-mail: </label>
               <input type='email' name='email' id='email' value=''/>
+              <?php if (isset($errores["email"])): ?>
+                <label for="email" class="error"><?= $errores["email"] ?></label>
+              <?php endif; ?>
           </div>
           <div class='container'>
               <label for='password' >Contraseña: </label>
               <input type='password' name='password' id='password' value=''/>
+              <?php if (isset($errores["password"])): ?>
+                <label for="password" class="error"><?= $errores["password"] ?></label>
+              <?php endif; ?>
           </div>
           <div class="container">
               <label class="mantener" for="mantener"> Mantenerme Logueado </label>

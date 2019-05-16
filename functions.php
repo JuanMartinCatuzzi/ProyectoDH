@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 function ValidarDatos ($datos){
   $errores=[];
   $DatosCorrectos=[];
@@ -84,15 +86,12 @@ function BuscarUsuario($email){
     if($usuario["email"]==$email){
       return $usuario;
     }
-    else {
-      return null;
-    }
   }
+  return null;
 }
 
 function ExisteUsuario($email){
-  $usuario= BuscarUsuario($email);
-  return is_array($usuario);
+  return BuscarUsuario($email)!== null;
 }
 
 function ValidarLogin($datos){
@@ -111,9 +110,18 @@ if (strlen($datos["password"])==0) {
 }
 else {
   $usuario=BuscarUsuario($datos["email"]);
-  if (!password_verify($datos["password"], $usuario["email"])){
+  if (!password_verify($datos["password"], $usuario["password"])){
     $errores["password"]="La contraseña es incorrecta";
   }
+}
   return $errores;
+}
+
+function LogearUsuario($email){
+  $_SESSION["email"]=$email;
+}
+
+function UsuarioLogeado(){
+  return isset($_SESSION["email"]);
 }
 ?>
