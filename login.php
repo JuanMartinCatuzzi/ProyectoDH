@@ -1,6 +1,7 @@
 <?PHP
 require_once "functions.php";
 $errores=[];
+$emailOK="";
 
 if (UsuarioLogeado()) {
   header("Location:home.php");
@@ -9,6 +10,7 @@ if (UsuarioLogeado()) {
 
 if ($_POST){
   $errores=ValidarLogin($_POST);
+  $emailOK=$_POST["email"];
   if (empty($errores)){
     LogearUsuario($_POST["email"]);
     var_dump($_SESSION);
@@ -70,7 +72,11 @@ if ($_POST){
           <h3>Ingrese Usuario y Contraseña para continuar:</h3>
           <div class='container'>
               <label for='email' >E-mail: </label>
+              <?php if(isset($errores["email"])): ?>
               <input type='email' name='email' id='email' value=''/>
+            <?php else: ?>
+              <input type="email" name="email" value="<?= $emailOK?>">
+            <?php endif; ?>
               <?php if (isset($errores["email"])): ?>
                 <label for="email" class="error"><?= $errores["email"] ?></label>
               <?php endif; ?>

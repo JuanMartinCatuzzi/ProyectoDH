@@ -6,6 +6,7 @@ $nameOK="";
 $surnameOK="";
 $emailOK="";
 $ageOK="";
+
 if ($_POST){
   $errores=ValidarDatos($_POST);
   $nameOK=trim($_POST["name"]);
@@ -15,6 +16,11 @@ if ($_POST){
   if(empty($errores)){
     $usuario=ArmarUsuario();
     GuardarUsuario($usuario);
+    LogearUsuario($emailOK);
+  }
+  if (UsuarioLogeado()) {
+    header("Location:home.php");
+    exit;
   }
 }
 ?>

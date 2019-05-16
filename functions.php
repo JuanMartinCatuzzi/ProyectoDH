@@ -55,8 +55,26 @@ if ($DatosCorrectos["ocupacion"]==""){
 //DEJAR CAMPO COMPLETO SI HAY ERRORES EN LOS SIGUIENTES.
 return $errores;
 }
+
+function GenerarId(){
+  if (!file_exists ("db.json")) {
+    $json="";
+  }
+  else{
+    $json=file_get_contents("db.json");
+  }
+  if ($json=="") {
+    return 1;
+  }
+  $array=json_decode($json, true);
+  $UltimoUsuario=array_pop($array["usuarios"]);
+  $NuevoId= $UltimoUsuario["id"]+1;
+  return $NuevoId;
+}
+
 function ArmarUsuario(){
 return  [
+    "id"=>GenerarId(),
     "nombre"=>trim($_POST["name"]),
     "apellido"=>trim($_POST["surname"]),
     "email"=>trim($_POST["email"]),
