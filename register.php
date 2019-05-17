@@ -36,6 +36,7 @@ if ($_POST){
 </head>
 <body>
   <header>
+    <div class="header-entero">
     <!--Menu con icono -->
     <div class="header-container">
   <div class="navbar">
@@ -69,6 +70,7 @@ if ($_POST){
       <li class="header"><i class="menulargo"></i>|</li>
       <li class="header"><i class="menulargo"></i>QUIENES SOMOS</li>
   </ul>
+</div>
   </header>
   <nav class="navigation">
     <ul>

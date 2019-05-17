@@ -1,0 +1,31 @@
+{
+    "usuarios": [
+        {
+            "id": 1,
+            "nombre": "DADAD",
+            "apellido": "afs",
+            "email": "catuzzijuanmartin@gmail.com",
+            "password": "$2y$10$rMPwlFQ4LJShMUJbED5nZOGM3uHOZ9eQFZ86Qgoh1NpJuMdp0xEd2",
+            "age": "25",
+            "ocupacion": "Jubilada\/o"
+        },
+        {
+            "id": 2,
+            "nombre": "Juan",
+            "apellido": "Catuzzi",
+            "email": "catuzzijuanmartin@gmail.com",
+            "password": "$2y$10$yE0ttVYFJVTgCgo85ARL5O9mJi.gqxt0mMtWSQETLHql5uKc5KDjG",
+            "age": "25",
+            "ocupacion": "Desempleada\/o"
+        },
+        {
+            "id": 3,
+            "nombre": "Juan",
+            "apellido": "Catuzzi",
+            "email": "andres.kgould@gmail.com",
+            "password": "$2y$10$5OBlcOFmMBsVOwcu\/TNPUO.4REzgI.Q9Jh4lB\/yvSQvsB.h0QV6JO",
+            "age": "25",
+            "ocupacion": "Empleada\/o"
+        }
+    ]
+}

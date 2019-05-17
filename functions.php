@@ -137,6 +137,9 @@ else {
 
 function LogearUsuario($email){
   $_SESSION["email"]=$email;
+  if (isset($_POST["mantener"])) {
+    setcookie("mantenerme",$email,time()+3600);
+  }
 }
 
 function UsuarioLogeado(){

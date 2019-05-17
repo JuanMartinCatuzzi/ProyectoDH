@@ -1,6 +1,12 @@
 <?php
 include_once "functions.php";
-
+if (isset($_COOKIE["mantenerme"])) {
+  LogearUsuario($_COOKIE["mantenerme"]);
+}
+echo "sesion";
+var_dump($_SESSION);
+echo "cookie";
+var_dump($_COOKIE["mantenerme"]);
  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -56,6 +62,7 @@ include_once "functions.php";
     <!-- MAIN -->
     <main>
       <div class="imagen">
+        <img src="img/bookish-02.jpg" alt="" class="cabeza">
         <?php if(UsuarioLogeado()):?>
           <?php $usuario=BuscarUsuario($_SESSION["email"]);  ?>
           <h2 class="bienvenido">¡Bienvenido, <?= $usuario["nombre"] ?>!</h2>
