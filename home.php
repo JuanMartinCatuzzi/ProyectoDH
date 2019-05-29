@@ -39,8 +39,8 @@ if (isset($_COOKIE["mantenerme"])) {
 <!--PRIMER FILA INCLUYENDO LOGO -->
     <ul class="listagrande-header">
       <li class="menucorto header" id="chau">PREGUNTAS FRECUENTES</li>
-      <li class="menucorto dentrodemenu"><img class="logo" src="img/Bookish.png" alt=""></li>
-      <li class="menucorto header" id="chau"> <?php if (!UsuarioLogeado()): ?> <a href "register.php" class="menucorto">REGISTRARSE </a> /
+      <li class="menucorto dentrodemenu"> <a href="home.php"> <img class="logo" src="img/Bookish.png" alt=""></a></li>
+      <li class="menucorto header" id="chau"> <?php if (!UsuarioLogeado()): ?> <a href="register.php" class="menucorto">REGISTRARSE </a> /
       <?php endif; ?> <?php if (!UsuarioLogeado()):?><a class="menucorto header" href="login.php"> LOG IN</a><?php else: ?> <a class="menucorto header" href="logout.php"> LOG OUT</a>
       <?php endif; ?> </li>
     </ul>
@@ -56,7 +56,7 @@ if (isset($_COOKIE["mantenerme"])) {
     </div>
     </header>
     <!-- MAIN -->
-    <main>
+    <main class="home">
       <div class="imagen">
         <img src="img/bookish-02.jpg" alt="" class="cabeza">
         <?php if(UsuarioLogeado()):?>

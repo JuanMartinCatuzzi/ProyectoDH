@@ -58,7 +58,7 @@ if ($_POST){
   <!--PRIMER FILA INCLUYENDO LOGO -->
   <ul class="listagrande-header">
     <li class="menucorto header" id="chau">PREGUNTAS FRECUENTES</li>
-    <li class="menucorto dentrodemenu"><img class="logo" src="img/Bookish.png" alt=""></li>
+    <li class="menucorto dentrodemenu"> <a href="home.php"> <img class="logo" src="img/Bookish.png" alt=""> </a></li>
     <li class="menucorto header" id="chau"><a class="menucorto" href="login.php">LOG IN </a> / <a class="menucorto" href="home.php">HOME</a></li>
   </ul>
 

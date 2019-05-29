@@ -24,7 +24,6 @@ div.header-entero{
   left: 0px;
   width: 100%;
   background-color: #2D4F6B;
-  padding-top: 20px;
   z-index: 100;
 }
   ul.header {
@@ -58,15 +57,13 @@ li.header {
 }
 .listagrande-header {
   display: flex;
-  height: 46px;
   align-items: center;
   padding: 0 10px;
   color: rgb(44,77,10);
-  justify-content: flex-start;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 10px;
+  width: 90%;
+  justify-content: space-between;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 .listagrande-header li {
   cursor: pointer;
@@ -96,7 +93,9 @@ div.header-container{
 main{
 max-width: 1400px;
 margin: 0 auto;
-margin-top: 100px;
+}
+main.home{
+  margin-top: 100px;
 }
 div.imagen{
   width: 100%;
@@ -278,14 +277,18 @@ label.error{
   display: none;
 }
 div.header-container{
-  width: 55%;
+  width: 50%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between
+}
+button.dropbtn{
+  padding-left: 30%;
 }
 .logo-mini{
-  display: inline-block;
+  transform: translate(16%,0%);
+  display: flex;
   width: 120px;
 }
   .dentrodemenu{
@@ -321,7 +324,7 @@ div.header-container{
 
   /* Dropdown button */
   .dropdown .dropbtn {
-    font-size: 30px;
+    font-size: 40px;
     border: none;
     outline: none;
     color: white;
@@ -338,7 +341,6 @@ div.header-container{
   /* Dropdown content (hidden by default) */
   .dropdown-content {
     display: none;
-    margin-top: 23px;
     position: absolute;
     background-color: #2D4F6B;
     min-width: 100%;
