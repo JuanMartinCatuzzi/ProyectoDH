@@ -265,6 +265,28 @@ label.error{
   color: rgb(255, 0, 0);
   font-size: 15pt;
 }
+
+/* CATEGORIAS*/
+
+section.categorias {
+  margin-top: 150px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+h1.categorias{
+  width: 100%;
+  text-align: center;
+}
+article.categoria {
+  background-image: url(../img/yellow.png);
+  background-size: 100%;
+  position: relative;
+  width: 20%;
+  margin: 10px;
+  max-height: 150px;
+}
 @media (max-width : 1200px){
   /*HEADER*/
   .bookish{
@@ -394,5 +416,8 @@ h3{
 article.articulos{
   width: 80%;
   padding-bottom: 2%;
+}
+article.categoria{
+width: 40%;
 }
 }
