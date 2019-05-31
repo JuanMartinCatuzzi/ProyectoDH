@@ -60,6 +60,7 @@ if (isset($_COOKIE["mantenerme"])) {
       <section class="categorias">
         <h1 class="categorias">Categorías</h1>
       <article class="categoria">
+      <img src="img/economia.jpg" class="imagen-articulo" alt="">
       <h3>Economia</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
       </article>

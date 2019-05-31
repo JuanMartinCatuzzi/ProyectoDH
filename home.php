@@ -29,7 +29,7 @@ if (isset($_COOKIE["mantenerme"])) {
           <a href="register.php">REGISTRARSE</a>
           <a href="login.php">LOG IN </a>
           <a href="#">PORQUE LEER CON BOOKISH</a>
-          <a href="#">CATEGORIAS</a>
+          <a href="categorias.php">CATEGORIAS</a>
           <a href="#">QUIENES SOMOS</a>
         </div>
       </div>
@@ -49,7 +49,7 @@ if (isset($_COOKIE["mantenerme"])) {
     <ul class="bookish header" role="navigation">
         <li class="header"><i class="menulargo"></i>PORQUE LEER CON BOOKISH</li>
         <li class="header"><i class="menulargo"></i>|</li>
-        <li class="header"><i class="menulargo"></i>CATEGORIAS</li>
+        <li class="header"><a href="categorias.php" class="menulargo header">CATEGORIAS</a></li>
         <li class="header"><i class="menulargo"></i>|</li>
         <li class="header"><i class="menulargo"></i>QUIENES SOMOS</li>
     </ul>

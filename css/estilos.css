@@ -34,6 +34,12 @@ div.header-entero{
 li.header {
   color: white;
 }
+a.header{
+  color: white;
+}
+a.header:hover{
+color: rgba(85,172,238 ,1);
+}
 .menulargo {
   margin-left: auto;
   margin-right: auto;
@@ -280,12 +286,27 @@ h1.categorias{
   text-align: center;
 }
 article.categoria {
-  background-image: url(../img/yellow.png);
   background-size: 100%;
   position: relative;
   width: 20%;
   margin: 10px;
   max-height: 150px;
+  position: relative;
+}
+img.imagen-articulo{
+  height: 100%;
+  width: 100%;
+  filter: blur(1px);
+  position: absolute;
+  left:0%;
+  top: 0%;
+  z-index: -1;
+}
+p{
+  color:white;
+}
+h3{
+color:white;
 }
 @media (max-width : 1200px){
   /*HEADER*/
