@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once "pdo.php";
 
 function ValidarDatos ($datos){
   $errores=[];
@@ -74,7 +75,7 @@ function GenerarId(){
 
 function ArmarUsuario(){
 return  [
-    "id"=>GenerarId(),
+    //"id"=>GenerarId(),
     "nombre"=>trim($_POST["name"]),
     "apellido"=>trim($_POST["surname"]),
     "email"=>trim($_POST["email"]),
@@ -84,28 +85,40 @@ return  [
   ];
 }
 function GuardarUsuario($usuario){
-if (!file_exists("db.json")){
-  $json="";
+//if (!file_exists("db.json")){
+//  $json="";
+//}
+//else {
+//  $json=file_get_contents("db.json");
+//}
+//$array=json_decode($json, true);
+//$array["usuarios"][]=$usuario;
+//$array=json_encode($array, JSON_PRETTY_PRINT);
+//file_put_contents("db.json", $array);
+include "pdo.php";
+$nameOK=$usuario["nombre"];
+$surnameOK=$usuario["apellido"];
+$emailOK=$usuario["email"];
+$ageOK=$usuario["age"];
+
+$data=$db->prepare("INSERT INTO usuarios VALUES(default, '$nameOK', '$surnameOK', '$emailOK')");
+$data->execute();
+
 }
-else {
-  $json=file_get_contents("db.json");
-}
-$array=json_decode($json, true);
-$array["usuarios"][]=$usuario;
-$array=json_encode($array, JSON_PRETTY_PRINT);
-file_put_contents("db.json", $array);
-}
-//LOGIN
+////LOGIN
 function BuscarUsuario($email){
-  $json=file_get_contents("db.json");
-  $array=json_decode($json, true);
-  //Buscar en la tabla
-  foreach ($array["usuarios"] as $usuario) {
-    if($usuario["email"]==$email){
-      return $usuario;
-    }
-  }
-  return null;
+//  $json=file_get_contents("db.json");
+//  $array=json_decode($json, true);
+//  //Buscar en la tabla
+//  foreach ($array["usuarios"] as $usuario) {
+//    if($usuario["email"]==$email){
+//      return $usuario;
+//    }
+//  }
+//  return null;
+include "pdo.php";
+$data=$db->prepare("SELECT * FROM usuarios WHERE email=$email");
+return $data;
 }
 
 function ExisteUsuario($email){

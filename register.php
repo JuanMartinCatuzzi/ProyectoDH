@@ -1,5 +1,6 @@
 <?PHP
 include_once "functions.php";
+include "pdo.php";
 $ocupaciones=["Estudiante", "Empleada/o", "Desempleada/o", "Autónomo", "Jubilada/o"];
 $errores=[];
 $nameOK="";
@@ -115,6 +116,7 @@ if ($_POST){
                   <label class="error" for="email"><?=$errores["email"]?></label>
                 <?php endif; ?>
             </div>
+                <?php var_dump($db); ?>
             <div class='container'>
                 <label for='password' >Contraseña: </label>
                 <input type='password' name='password' id='password' value=''/>
