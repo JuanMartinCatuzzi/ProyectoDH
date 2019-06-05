@@ -3,7 +3,7 @@
 //$dsn = "mysql:host=localhost;dbname=blend_tm01;port=3306";
 $dsn = "mysql:host=127.0.0.1;dbname=bookish;port=3306";
 $user = "root";
-$pass = "";
+$pass = "root";
 
 //$db = new PDO($dsn, $user, $pass);
 

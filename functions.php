@@ -100,8 +100,9 @@ $nameOK=$usuario["nombre"];
 $surnameOK=$usuario["apellido"];
 $emailOK=$usuario["email"];
 $ageOK=$usuario["age"];
+$passwordOK=$usuario["password"];
 
-$data=$db->prepare("INSERT INTO usuarios VALUES(default, '$nameOK', '$surnameOK', '$emailOK')");
+$data=$db->prepare("INSERT INTO usuarios VALUES(default, '$nameOK', '$surnameOK', '$emailOK', '$passwordOK')");
 $data->execute();
 
 }
