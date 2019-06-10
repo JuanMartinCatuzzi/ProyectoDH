@@ -1,6 +1,6 @@
 <?php
 include_once "functions.php";
-include "pdo.php";
+//include "pdo.php";
 if (isset($_COOKIE["mantenerme"])) {
   LogearUsuario($_COOKIE["mantenerme"]);
 }

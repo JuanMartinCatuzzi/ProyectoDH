@@ -95,14 +95,19 @@ function GuardarUsuario($usuario){
 //$array["usuarios"][]=$usuario;
 //$array=json_encode($array, JSON_PRETTY_PRINT);
 //file_put_contents("db.json", $array);
-include "pdo.php";
+global $db;
 $nameOK=$usuario["nombre"];
 $surnameOK=$usuario["apellido"];
 $emailOK=$usuario["email"];
 $ageOK=$usuario["age"];
 $passwordOK=$usuario["password"];
 
-$data=$db->prepare("INSERT INTO usuarios VALUES(default, '$nameOK', '$surnameOK', '$emailOK', '$passwordOK')");
+$data=$db->prepare("INSERT INTO usuarios VALUES(default, :nombre, :apellido, :email, :password)");
+$data->bindValue(":nombre", $nameOK);
+$data->bindValue(":apellido", $surnameOK);
+$data->bindValue(":email", $emailOK);
+$data->bindValue(":age", $ageOK);
+$data->bindValue(":password", $passwordOK);
 $data->execute();
 
 }
@@ -117,9 +122,15 @@ function BuscarUsuario($email){
 //    }
 //  }
 //  return null;
-include "pdo.php";
-$data=$db->prepare("SELECT * FROM usuarios WHERE email=$email");
-return $data;
+global $db;
+$data=$db->prepare("SELECT * FROM usuarios WHERE email = :email");
+$data->bindValue(":email", $email);
+$data->execute();
+$usuario=$data->fetch(PDO::FETCH_ASSOC);
+if ($usuario){
+  return $usuario;
+}
+return null;
 }
 
 function ExisteUsuario($email){
