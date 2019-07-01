@@ -26,6 +26,30 @@
             "password": "$2y$10$5OBlcOFmMBsVOwcu\/TNPUO.4REzgI.Q9Jh4lB\/yvSQvsB.h0QV6JO",
             "age": "25",
             "ocupacion": "Empleada\/o"
+        },
+        {
+            "id": 4,
+            "name": "DADAD",
+            "email": "catuzzijuanmartin@gmail.com",
+            "password": "$2y$10$XlWKHccY5EpL.NyuhxYLrexxIRFboD61isGxx73iTI2Hz1LusBWmy",
+            "bDate": "2019-07-18",
+            "ocupation": "Empleada\/o"
+        },
+        {
+            "id": 5,
+            "name": "DADAD",
+            "email": "catuzzijuanmartin@gmail.com",
+            "password": "$2y$10$4k7MD\/0eaIKPc8E961pjOeOgfW.q0jE46lLggeBj.xz4bqcxbZVFK",
+            "bDate": "2019-07-18",
+            "ocupation": "Empleada\/o"
+        },
+        {
+            "id": 6,
+            "name": "DADAD",
+            "email": "martin.hemmingsen@gmail.com",
+            "password": "$2y$10$Iktvefj3epnK5eaVVj4JPu.H6ttvlnueakaMO50AHAJHE4.t5TIo.",
+            "bDate": "2019-07-18",
+            "ocupation": "Aut\u00f3nomo"
         }
     ]
 }

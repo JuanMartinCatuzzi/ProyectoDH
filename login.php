@@ -1,5 +1,5 @@
 <?PHP
-require_once "functions.php";
+include "init.php";
 $errores=[];
 $emailOK="";
 

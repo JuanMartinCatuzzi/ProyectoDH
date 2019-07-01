@@ -44,14 +44,13 @@ if ($DatosCorrectos["password"]==""){
 if ($DatosCorrectos["password-repeat"]!=$DatosCorrectos["password"]){
   $errores["password-repeat"]="El campo no coincide con Contraseña";
 }
-if (strlen ($DatosCorrectos["age"])==0) {
-  $errores["age"]="Completar el campo";
-}elseif (ctype_digit($DatosCorrectos["age"])==false) {
-  $errores["age"]="El campo debe ser completo con números.";
+if (strlen ($DatosCorrectos["bDate"])==0) {
+  $errores["bDate"]="Completar el campo";
 }
+
 //DEJAR CAMPO COMPLETO SI HAY ERRORES EN LOS SIGUIENTES.
-if ($DatosCorrectos["ocupacion"]==""){
-  $errores["ocupacion"]="Seleccionar una ocupación";
+if ($DatosCorrectos["ocupation"]==""){
+  $errores["ocupation"]="Seleccionar una ocupación";
 }
 //DEJAR CAMPO COMPLETO SI HAY ERRORES EN LOS SIGUIENTES.
 return $errores;
@@ -80,8 +79,8 @@ return  [
     "apellido"=>trim($_POST["surname"]),
     "email"=>trim($_POST["email"]),
     "password"=>password_hash($_POST["password"], PASSWORD_DEFAULT),
-    "age"=>trim($_POST["age"]),
-    "ocupacion"=>$_POST["ocupacion"]
+    "bDate"=>trim($_POST["bDate"]),
+    "ocupation"=>$_POST["ocupation"]
   ];
 }
 function GuardarUsuario($usuario){
@@ -99,15 +98,17 @@ global $db;
 $nameOK=$usuario["nombre"];
 $surnameOK=$usuario["apellido"];
 $emailOK=$usuario["email"];
-$ageOK=$usuario["age"];
+$bDateOK=$usuario["bDate"];
 $passwordOK=$usuario["password"];
+$ocupationOK=$usuario["ocupation"];
 
-$data=$db->prepare("INSERT INTO usuarios VALUES(default, :nombre, :apellido, :email, :password)");
+$data=$db->prepare("INSERT INTO usuarios VALUES(default, :nombre, :apellido, :email, :password, :bDate, :ocupation)");
 $data->bindValue(":nombre", $nameOK);
 $data->bindValue(":apellido", $surnameOK);
 $data->bindValue(":email", $emailOK);
-$data->bindValue(":age", $ageOK);
+$data->bindValue(":bDate", $bDateOK);
 $data->bindValue(":password", $passwordOK);
+$data->bindValue(":ocupation", $ocupationOK);
 $data->execute();
 
 }
