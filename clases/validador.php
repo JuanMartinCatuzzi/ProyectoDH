@@ -3,7 +3,7 @@
 class Validador {
 
   public static function ValidarDatos ($datos){
-    global $DBAll;
+    global $dbAll;
     $errores=[];
     $DatosCorrectos=[];
     foreach ($datos as $posicion => $valor) {
@@ -59,7 +59,7 @@ class Validador {
 
 
   public static function ValidarLogin($datos){
-    global $DBAll;
+    global $dbAll;
     $errores=[];
   if (strlen($datos["email"])==0) {
     $errores["email"]="El campo no debe estar vacío";
@@ -67,15 +67,15 @@ class Validador {
   elseif (!filter_var($datos["email"], FILTER_VALIDATE_EMAIL)) {
     $errores["email"]="Completar el campo con formato email";
   }
-  elseif (!ExisteUsuario($datos["email"])){
+  elseif (!$dbAll->ExisteUsuario($datos["email"])){
     $errores["email"]="El usuario no existe";
   }
   if (strlen($datos["password"])==0) {
     $errores["password"]="El campo no debe estar vacío";
   }
   else {
-    $usuario=BuscarUsuario($datos["email"]);
-    if (!password_verify($datos["password"], $usuario["password"])){
+    $usuario=$dbAll->BuscarUsuario($datos["email"]);
+    if (!password_verify($datos["password"], $usuario->password)){
       $errores["password"]="La contraseña es incorrecta";
     }
   }

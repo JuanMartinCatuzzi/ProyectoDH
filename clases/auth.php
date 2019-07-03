@@ -7,7 +7,7 @@ class Auth
     session_start();
   }
 
-  public function LoguearUsuario($email){
+  public function LogearUsuario($email){
     $_SESSION["email"] = $email;
   }
 

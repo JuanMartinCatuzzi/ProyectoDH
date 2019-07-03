@@ -3,16 +3,16 @@ include "init.php";
 $errores=[];
 $emailOK="";
 
-if (UsuarioLogeado()) {
+if ($auth->UsuarioLogeado()) {
   header("Location:home.php");
   exit;
 }
 
 if ($_POST){
-  $errores=ValidarLogin($_POST);
+  $errores=Validador::ValidarLogin($_POST);
   $emailOK=$_POST["email"];
   if (empty($errores)){
-    LogearUsuario($_POST["email"]);
+    $auth->LogearUsuario($_POST["email"]);
     header("Location:home.php");
     exit;
   }

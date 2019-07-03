@@ -40,6 +40,7 @@ class DbJson extends Db
       $newUsuario = [
         "id" => $this->GenerarId(),
         "name" => $usuario->getName(),
+        "surname"=>$usuario->getSurname(),
         "email" => $usuario->getEmail(),
         "password" => $usuario->getPassword(),
         "bDate" => $usuario->getbDate(),

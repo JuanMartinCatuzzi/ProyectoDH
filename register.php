@@ -14,11 +14,12 @@ if ($_POST){
   $emailOK=trim($_POST["email"]);
   $bDateOK=trim($_POST["bDate"]);
   if(empty($errores)){
-    $usuario=  $usuario = new Usuario($_POST);//armarUsuario();
+    $usuario= new Usuario($_POST);//armarUsuario();
         //var_dump($usuario, $$dbAll);
 
         // $mySql->guardarUsuario($usuario);
         $dbAll->GuardarUsuario($usuario);
+        Auth::LogearUsuario($emailOK);
   }
   if ($auth->UsuarioLogeado()) {
     header("Location:home.php");

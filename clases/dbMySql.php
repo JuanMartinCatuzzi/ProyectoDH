@@ -10,7 +10,7 @@ class DbMysql extends Db
     $dsn = "mysql:host=localhost;dbname=bookish;port=3306";
     //$dsn = "mysql:host=127.0.0.1;dbname=movies_db;port=3306";
     $user = "root";
-    $pass = "root";
+    $pass = "";
 
     //$db = new PDO($dsn, $user, $pass);
 
@@ -27,7 +27,7 @@ class DbMysql extends Db
     }
   }
 
-  function GuardarUsuario($usuario){
+  function GuardarUsuario(Usuario $usuario){
   //if (!file_exists("db.json")){
   //  $json="";
   //}
@@ -38,17 +38,17 @@ class DbMysql extends Db
   //$array["usuarios"][]=$usuario;
   //$array=json_encode($array, JSON_PRETTY_PRINT);
   //file_put_contents("db.json", $array);
-  global $db;
-  $nameOK=$usuario["nombre"];
-  $surnameOK=$usuario["apellido"];
-  $emailOK=$usuario["email"];
-  $bDateOK=$usuario["bDate"];
-  $passwordOK=$usuario["password"];
-  $ocupationOK=$usuario["ocupation"];
+  global $connection;
+  $nameOK=$usuario->getName();
+  $surnameOK=$usuario->getSurname();
+  $emailOK=$usuario->getEmail();
+  $bDateOK=$usuario->getbDate();
+  $passwordOK=$usuario->getPassword();
+  $ocupationOK=$usuario->getOcupation();
 
-  $data=$db->prepare("INSERT INTO usuarios VALUES(default, :nombre, :apellido, :email, :password, :bDate, :ocupation)");
-  $data->bindValue(":nombre", $nameOK);
-  $data->bindValue(":apellido", $surnameOK);
+  $data=$this->connection->prepare("INSERT INTO usuarios VALUES(default, :name, :surname, :email, :password, :bDate, :ocupation)");
+  $data->bindValue(":name", $nameOK);
+  $data->bindValue(":surname", $surnameOK);
   $data->bindValue(":email", $emailOK);
   $data->bindValue(":bDate", $bDateOK);
   $data->bindValue(":password", $passwordOK);
@@ -67,11 +67,11 @@ class DbMysql extends Db
   //    }
   //  }
   //  return null;
-  global $db;
-  $data=$db->prepare("SELECT * FROM usuarios WHERE email = :email");
+  global $connection;
+  $data=$this->connection->prepare("SELECT * FROM usuarios WHERE email = :email");
   $data->bindValue(":email", $email);
   $data->execute();
-  $usuario=$data->fetch(PDO::FETCH_ASSOC);
+  $usuario=$data->fetch(PDO::FETCH_OBJ);
   if ($usuario){
     return $usuario;
   }
