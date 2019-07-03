@@ -10,7 +10,7 @@ class DbMysql extends Db
     $dsn = "mysql:host=localhost;dbname=bookish;port=3306";
     //$dsn = "mysql:host=127.0.0.1;dbname=movies_db;port=3306";
     $user = "root";
-    $pass = "";
+    $pass = "root";
 
     //$db = new PDO($dsn, $user, $pass);
 
@@ -71,19 +71,25 @@ class DbMysql extends Db
   $data=$this->connection->prepare("SELECT * FROM usuarios WHERE email = :email");
   $data->bindValue(":email", $email);
   $data->execute();
-  $usuario=$data->fetch(PDO::FETCH_OBJ);
+  $usuario=$data->fetch(PDO::FETCH_ASSOC);
   if ($usuario){
+    $usuario= new Usuario ($usuario);
     return $usuario;
   }
   return null;
   }
 
   function ExisteUsuario($email){
-    return BuscarUsuario($email)!== null;
+    return $this->BuscarUsuario($email)!== null;
   }
 
   function UsuarioLogeado(){
-    return isset($_SESSION["email"]);
+    if (isset($_SESSION["email"])) {
+      $usuario= $this->BuscarUsuario($_SESSION["email"]);
+      return $usuario;
+    }
+    else {
+      return false;
+    }
   }
-
-}
+  }
