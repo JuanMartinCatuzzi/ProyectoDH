@@ -2,12 +2,12 @@
     "usuarios": [
         {
             "id": 1,
-            "name": "juan",
+            "name": "Juan",
             "surname": "Catuzzi",
             "email": "catuzzijuanmartin@gmail.com",
             "password": "$2y$10$jThljZQM2Kn934tMvh7\/6.k1MML88hLV1CKG2tYLtrCmxfgndtaAi",
-            "bDate": "2019-07-09",
-            "ocupation": "Empleada\/o"
+            "bDate": "1999-07-07",
+            "ocupation": "Estudiante"
         }
     ]
 }

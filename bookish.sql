@@ -26,10 +26,12 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuarios` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) NOT NULL,
-  `apellido` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `surname` varchar(100) NOT NULL,
   `email` text NOT NULL,
   `password` text NOT NULL,
+  `bDate` date NOT NULL,
+  `ocupation` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -40,7 +42,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Juan','Catuzzi','catuzzijuan@gmail.com','ndgkjadbgla'),(2,'Juan','Catuzzi','catuzzijuanmartin@gmail.com','$2y$10$OtR3auvDwyu6oecV2TOAsue73Y/swdU72EKvQ0IOMJRE0Gznd3UGC'),(3,'Andy','K','andres.kgould@gmail.com','$2y$10$B5m1eKTcpf8jG.MxNuTwzu/P9Nv/Sj5wXjoeUJ1cWtQBqKXZVG9zy');
+INSERT INTO `usuarios` VALUES (1,'Juan','Catuzzi','catuzzijuanmartin@gmail.com','$2y$10$OtR3auvDwyu6oecV2TOAsue73Y/swdU72EKvQ0IOMJRE0Gznd3UGC', '1999/07/07', 'Estudiante');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
