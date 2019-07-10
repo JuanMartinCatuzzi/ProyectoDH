@@ -1,8 +1,8 @@
 <?php
-include_once "functions.php";
+include "init.php";
 //include "pdo.php";
 if (isset($_COOKIE["mantenerme"])) {
-  LogearUsuario($_COOKIE["mantenerme"]);
+  $auth->LogearUsuario($_COOKIE["mantenerme"]);
 }
  ?>
 <!DOCTYPE html>
@@ -41,8 +41,8 @@ if (isset($_COOKIE["mantenerme"])) {
     <ul class="listagrande-header">
       <li class="menucorto header" id="chau">PREGUNTAS FRECUENTES</li>
       <li class="menucorto dentrodemenu"> <a href="home.php"> <img class="logo" src="img/Bookish.png" alt=""></a></li>
-      <li class="menucorto header" id="chau"> <?php if (!UsuarioLogeado()): ?> <a href="register.php" class="menucorto">REGISTRARSE </a> /
-      <?php endif; ?> <?php if (!UsuarioLogeado()):?><a class="menucorto header" href="login.php"> LOG IN</a><?php else: ?> <a class="menucorto header" href="logout.php"> LOG OUT</a>
+      <li class="menucorto header" id="chau"> <?php if (!$auth->UsuarioLogeado()): ?> <a href="register.php" class="menucorto">REGISTRARSE </a> /
+      <?php endif; ?> <?php if (!$auth->UsuarioLogeado()):?><a class="menucorto header" href="login.php"> LOG IN</a><?php else: ?> <a class="menucorto header" href="logout.php"> LOG OUT</a>
       <?php endif; ?> </li>
     </ul>
 
@@ -60,9 +60,9 @@ if (isset($_COOKIE["mantenerme"])) {
     <main class="home">
       <div class="imagen">
         <img src="img/bookish-02.jpg" alt="" class="cabeza">
-        <?php if(UsuarioLogeado()):?>
-          <?php $usuario=BuscarUsuario($_SESSION["email"]);  ?>
-          <h2 class="bienvenido">¡Bienvenido, <?= $usuario["nombre"] ?>!</h2>
+        <?php if($auth->UsuarioLogeado()):?>
+          <?php $usuario=$dbAll->BuscarUsuario($_SESSION["email"]);  ?>
+          <h2 class="bienvenido">¡Bienvenido, <?= $usuario->getName() ?>!</h2>
         <?php endif; ?>
       </div>
     <section class="productos">

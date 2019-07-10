@@ -1,25 +1,27 @@
 <?PHP
-include_once "functions.php";
-include "pdo.php";
+include 'init.php';
 $ocupaciones=["Estudiante", "Empleada/o", "Desempleada/o", "Autónomo", "Jubilada/o"];
 $errores=[];
 $nameOK="";
 $surnameOK="";
 $emailOK="";
-$ageOK="";
+$bDateOK="";
 
 if ($_POST){
-  $errores=ValidarDatos($_POST);
+  $errores=Validador::ValidarDatos($_POST);
   $nameOK=trim($_POST["name"]);
   $surnameOK=trim($_POST["surname"]);
   $emailOK=trim($_POST["email"]);
-  $ageOK=trim($_POST["age"]);
+  $bDateOK=trim($_POST["bDate"]);
   if(empty($errores)){
-    $usuario=ArmarUsuario();
-    GuardarUsuario($usuario);
-    LogearUsuario($emailOK);
+    $usuario= new Usuario($_POST);//armarUsuario();
+        //var_dump($usuario, $$dbAll);
+
+        // $mySql->guardarUsuario($usuario);
+        $dbAll->GuardarUsuario($usuario);
+        Auth::LogearUsuario($emailOK);
   }
-  if (UsuarioLogeado()) {
+  if ($auth->UsuarioLogeado()) {
     header("Location:home.php");
     exit;
   }
@@ -35,44 +37,45 @@ if ($_POST){
     <link rel="stylesheet" href="css/estilos.css">
     <title>Bookish | Registrarse</title>
 </head>
-<body>
-  <header>
-    <div class="header-entero">
-    <!--Menu con icono -->
-    <div class="header-container">
-  <div class="navbar">
-    <div class="dropdown">
-      <button class="dropbtn" id="action" href="action">
-      <i class="fa fa-ellipsis-v"></i>
-      </button>
-      <div id="action"class="dropdown-content">
-        <a href="#">PREGUNTAS FRECUENTES</a>
-        <a href="login.php">LOG IN</a>
-        <a href="#">PORQUE LEER CON BOOKISH</a>
-        <a href="#">CATEGORIAS</a>
-        <a href="#">QUIENES SOMOS</a>
-      </div>
+<header>
+  <div class="header-entero">
+  <!--Menu con icono -->
+  <div class="header-container">
+<div class="navbar">
+  <div class="dropdown">
+    <button class="dropbtn" id="action" href="action">
+    <i class="fa fa-ellipsis-v"></i>
+    </button>
+    <div id="action"class="dropdown-content">
+      <a href="#">PREGUNTAS FRECUENTES</a>
+      <a href="login.php">LOG IN</a>
+      <a href="#">PORQUE LEER CON BOOKISH</a>
+      <a href="#">CATEGORIAS</a>
+      <a href="#">QUIENES SOMOS</a>
     </div>
   </div>
-  <img src="img/Bookish.png" class="logo-mini" alt="">
-  </div>
-  <!--PRIMER FILA INCLUYENDO LOGO -->
-  <ul class="listagrande-header">
-    <li class="menucorto header" id="chau">PREGUNTAS FRECUENTES</li>
-    <li class="menucorto dentrodemenu"> <a href="home.php"> <img class="logo" src="img/Bookish.png" alt=""> </a></li>
-    <li class="menucorto header" id="chau"><a class="menucorto" href="login.php">LOG IN </a> / <a class="menucorto" href="home.php">HOME</a></li>
-  </ul>
-
-  <!--SEGUNDA FILA INFLUYE MAS OPCIONES -->
-  <ul class="bookish header" role="navigation">
-      <li class="header"><i class="menulargo"></i>PORQUE LEER CON BOOKISH</li>
-      <li class="header"><i class="menulargo"></i>|</li>
-      <li class="header"><i class="menulargo"></i>CATEGORIAS</li>
-      <li class="header"><i class="menulargo"></i>|</li>
-      <li class="header"><i class="menulargo"></i>QUIENES SOMOS</li>
-  </ul>
 </div>
-  </header>
+<img src="img/Bookish.png" class="logo-mini" alt="">
+</div>
+<!--PRIMER FILA INCLUYENDO LOGO -->
+<ul class="listagrande-header">
+  <li class="menucorto header" id="chau">PREGUNTAS FRECUENTES</li>
+  <li class="menucorto dentrodemenu"> <a href="home.php"> <img class="logo" src="img/Bookish.png" alt=""> </a></li>
+  <li class="menucorto header" id="chau"><a class="menucorto" href="login.php">LOG IN </a> / <a class="menucorto" href="home.php">HOME</a></li>
+</ul>
+
+<!--SEGUNDA FILA INFLUYE MAS OPCIONES -->
+<ul class="bookish header" role="navigation">
+    <li class="header"><i class="menulargo"></i>PORQUE LEER CON BOOKISH</li>
+    <li class="header"><i class="menulargo"></i>|</li>
+    <li class="header"><i class="menulargo"></i>CATEGORIAS</li>
+    <li class="header"><i class="menulargo"></i>|</li>
+    <li class="header"><i class="menulargo"></i>QUIENES SOMOS</li>
+</ul>
+</div>
+</header>
+<body>
+
   <nav class="navigation">
     <ul>
       <li><a href="php/home.php"> Inicio /</a></li>
@@ -131,26 +134,26 @@ if ($_POST){
                 <?php endif; ?>
             </div>
             <div class='container'>
-                <label for='age' >Edad: </label>
-                <?php if (isset($errores["age"])): ?>
-                <input type="number" id="age" name="age" value="">
+                <label for='bDate' >Fecha de Nacimiento: </label>
+                <?php if (isset($errores[""])): ?>
+                <input type="date" id="bDate" name="bDate" value="">
               <?php else : ?>
-                <input type="number" name="age" id="age" value="<?= $ageOK?>">
+                <input type="date" name="bDate" id="bDate" value="<?= $bDateOK?>">
               <?php endif; ?>
-                <?php if (isset($errores["age"])):?>
-                  <label class="error" for="age"><?=$errores["age"]?></label>
+                <?php if (isset($errores["bDate"])):?>
+                  <label class="error" for="bDate"><?=$errores["bDate"]?></label>
                 <?php endif; ?>
             </div>
             <div class='container'>
-                <label for='ocupacion' >Ocupación: </label>
-                <select class="" name="ocupacion" id="ocupacion" >
+                <label for='ocupation' >Ocupación: </label>
+                <select class="" name="ocupation" id="ocupation" >
                   <option value="" selected>Seleccionar</option>
                   <?php foreach ($ocupaciones as $key):?>
                     <option value="<?=$key ?>"><?=$key ?></option>
                   <?php endforeach; ?>
                 </select>
-                <?php if (isset($errores["ocupacion"])):?>
-                  <label class="error" for="ocupacion"><?=$errores["ocupacion"]?></label>
+                <?php if (isset($errores["ocupation"])):?>
+                  <label class="error" for="ocupation"><?=$errores["ocupation"]?></label>
                 <?php endif; ?>
             </div>
             <input type='submit' name='Submit' value='Enviar' />
